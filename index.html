@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FeelInk - Transforme sua Música em Arte</title>
+    <title>FeelInk - Transforme Música em Arte</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
@@ -12,8 +12,8 @@
     <header>
         <div class="container">
             <div class="logo-area">
-                <img src="logo.png" alt="FeelInk Logo (by vcw)" class="logo-img">
-                </div>
+                <img src="logo.png" alt="FeelInk Logo" class="logo-img">
+            </div>
             <p class="tagline">Sua música favorita, imortalizada em arte personalizada.</p>
         </div>
     </header>
@@ -24,13 +24,23 @@
             <section class="pedido-section">
                 <div class="card card-neon-blue">
                     <h2>Crie Sua Arte</h2>
-                    <p class="instrucoes">Envie-nos a música, a sua imagem e escolha um estilo.</p>
+                    <p class="instrucoes">Envie-nos a música, sua imagem e escolha o estilo.</p>
                     
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
                         
+                        <input type="hidden" name="access_key" value="b0b4cfe9-5de7-4fa1-98d5-df4e42a2188b">
+                        <input type="hidden" name="subject" value="🎨 NOVO PEDIDO - FeelInk!">
+                        <input type="hidden" name="from_name" value="Sistema FeelInk">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                         <div class="input-group">
                             <label for="musica">Qual é a sua música?</label>
-                            <input type="text" id="musica" name="musica" placeholder="Link do Spotify, YouTube ou Nome da Música" required>
+                            <input type="text" id="musica" name="musica" placeholder="Link do Spotify, YouTube ou Nome" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="whatsapp">Seu WhatsApp (para receber o orçamento)</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
                         </div>
 
                         <div class="input-group">
@@ -49,7 +59,6 @@
                                 <option value="capa_album">Capa de Álbum Abstrata</option>
                                 <option value="retrato_minimalista">Retrato Minimalista</option>
                                 <option value="arte_neon">Visual Neon Retro</option>
-                                <option value="realista">Realista Premium</option>
                             </select>
                         </div>
 
@@ -63,18 +72,9 @@
                 <div class="card card-neon-purple">
                     <h3>Como Funciona</h3>
                     <div class="passos-wrapper">
-                        <div class="passo">
-                            <div class="passo-numero">1</div>
-                            <p>Preencha o formulário acima com seus detalhes.</p>
-                        </div>
-                        <div class="passo">
-                            <div class="passo-numero">2</div>
-                            <p>Nossa IA e nossos artistas interpretam sua música e foto.</p>
-                        </div>
-                        <div class="passo">
-                            <div class="passo-numero">3</div>
-                            <p>Você recebe uma prévia exclusiva e finaliza o pedido.</p>
-                        </div>
+                        <div class="passo"><div class="passo-numero">1</div><p>Envie sua música, foto e WhatsApp.</p></div>
+                        <div class="passo"><div class="passo-numero">2</div><p>Avaliamos e enviamos o orçamento no seu Zap.</p></div>
+                        <div class="passo"><div class="passo-numero">3</div><p>Você aprova e recebe a arte na hora!</p></div>
                     </div>
                 </div>
             </section>
@@ -82,17 +82,10 @@
         </div>
     </main>
 
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2024 FeelInk by VCW. Todos os direitos reservados.</p>
-            <p>Este é um projeto de Feira de Exposições.</p>
-        </div>
-    </footer>
-
     <script>
+        // Script para mostrar o nome da foto selecionada
         const fileInput = document.querySelector('.file-input');
         const fileNameSpan = document.querySelector('.file-name');
-
         fileInput.addEventListener('change', function() {
             if (this.files && this.files.length > 0) {
                 fileNameSpan.textContent = this.files[0].name;
@@ -101,6 +94,5 @@
             }
         });
     </script>
-
 </body>
 </html>
