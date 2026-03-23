@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA INTERNO - FeelInk</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container painel-interno">
+        <div class="card card-neon-blue">
+            <h2>⚙️ Painel do Vendedor</h2>
+            <p class="instrucoes">Gere o orçamento para enviar ao cliente.</p>
+            
+            <div class="input-group">
+                <label>Nome do Cliente (Opcional)</label>
+                <input type="text" id="cli-nome" placeholder="Ex: João">
+            </div>
+
+            <div class="input-group">
+                <label>WhatsApp do Cliente (Apenas números)</label>
+                <input type="text" id="cli-zap" placeholder="Ex: 11999999999">
+            </div>
+
+            <div class="input-group">
+                <label>Valor Cobrado (R$)</label>
+                <input type="text" id="cli-valor" placeholder="Ex: 45,00">
+            </div>
+
+            <div class="input-group">
+                <label>Tempo Estimado de Entrega</label>
+                <input type="text" id="cli-tempo" placeholder="Ex: 40 minutos">
+            </div>
+
+            <button onclick="gerarOrcamento()" class="btn btn-neon-blue">GERAR MENSAGEM</button>
+
+            <div id="resultado" class="resultado-box">
+                <p id="texto-gerado"></p>
+                <a id="link-zap" href="#" target="_blank" class="btn btn-neon-purple">ENVIAR PARA O CLIENTE</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function gerarOrcamento() {
+            const nome = document.getElementById('cli-nome').value;
+            const zap = document.getElementById('cli-zap').value.replace(/\D/g, ''); 
+            const valor = document.getElementById('cli-valor').value;
+            const tempo = document.getElementById('cli-tempo').value;
+
+            if(!zap) { alert("Digite o número do WhatsApp!"); return; }
+
+            const saudacao = nome ? `Olá ${nome}! 🎵🎨\n\n` : `Olá! 🎵🎨\n\n`;
+            const mensagem = `${saudacao}Aqui é da equipe FeelInk. Recebemos seu pedido de arte!\n\nSua arte personalizada fica no valor de *R$ ${valor}* e o prazo de entrega é de *${tempo}*.\n\nPodemos confirmar a produção? Mande um "Sim" para enviarmos a chave Pix.`;
+
+            document.getElementById('texto-gerado').textContent = mensagem;
+            document.getElementById('link-zap').href = `https://wa.me/55${zap}?text=${encodeURIComponent(mensagem)}`;
+            document.getElementById('resultado').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
