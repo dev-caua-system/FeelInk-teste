@@ -1,300 +1,51 @@
-/* =========================================
-   1. Configurações Globais (Cores e Fontes)
-   ========================================= */
 :root {
-    /* Cores Principais - Baseadas na Logo */
-    --main-bg: #0a0a10;           /* Fundo muito escuro para contraste */
-    --card-bg: #12121c;           /* Fundo levemente mais claro para os cards */
-    --text-color: #f0f0f5;        /* Texto quase branco */
-    
-    --neon-blue: #00ffff;        /* Ciano Neon */
-    --neon-purple: #a020f0;      /* Roxo Vibrante */
-    --neon-pink: #ff007f;        /* Rosa choque (detalhes opcionais) */
-    
-    /* Cores de formulário */
+    --main-bg: #0a0a10;
+    --card-bg: #12121c;
+    --text-color: #f0f0f5;
+    --neon-blue: #00ffff;
+    --neon-purple: #a020f0;
     --input-border: #33334d;
-    --input-focus-blue: #00ffff40; /* Ciano translúcido para foco */
-    
-    /* Fontes */
-    --font-heading: 'Playfair Display', serif; /* Fonte serifada para títulos elegantes */
-    --font-body: 'Montserrat', sans-serif;   /* Fonte sem serifa moderna para corpo */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--main-bg); color: var(--text-color); font-family: var(--font-body); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-body {
-    background-color: var(--main-bg);
-    color: var(--text-color);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+header { background-color: var(--card-bg); padding: 40px 0; text-align: center; border-bottom: 2px solid var(--input-border); }
+.logo-img { max-height: 80px; filter: drop-shadow(0 0 10px var(--neon-blue)); }
+.tagline { font-size: 1.2rem; font-family: var(--font-heading); opacity: 0.8; margin-top: 10px; }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.main-content { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 60px 0; }
+@media (max-width: 768px) { .main-content { grid-template-columns: 1fr; } }
 
-/* =========================================
-   2. Cabeçalho e Logo
-   ========================================= */
-header {
-    background-color: var(--card-bg);
-    padding: 40px 0;
-    text-align: center;
-    border-bottom: 2px solid var(--input-border);
-}
-
-.logo-area {
-    margin-bottom: 15px;
-}
-
-.logo-img {
-    max-height: 80px; /* Ajuste conforme necessário */
-    width: auto;
-    filter: drop-shadow(0 0 10px var(--neon-blue)); /* Adiciona um brilho na logo */
-}
-
-/* Caso não tenha imagem */
-.logo-fallback {
-    font-size: 3rem;
-    color: var(--neon-blue);
-    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-purple);
-    font-weight: bold;
-}
-
-.logo-fallback .vcw {
-    font-size: 0.8rem;
-    color: var(--text-color);
-    font-weight: normal;
-    text-shadow: none;
-    vertical-align: sub;
-}
-
-.tagline {
-    font-size: 1.2rem;
-    font-family: var(--font-heading);
-    color: var(--text-color);
-    opacity: 0.8;
-}
-
-/* =========================================
-   3. Estrutura do Conteúdo Principal
-   ========================================= */
-.main-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-    padding: 60px 0;
-    align-items: start;
-}
-
-/* Responsividade: Transforma em uma coluna em telas pequenas */
-@media (max-width: 768px) {
-    .main-content {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* =========================================
-   4. Estilo dos Cards e Efeitos Neon
-   ========================================= */
-.card {
-    background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-}
-
-.card-neon-blue {
-    border: 2px solid var(--neon-blue);
-    box-shadow: 0 0 15px -3px var(--neon-blue);
-}
-
-.card-neon-purple {
-    border: 2px solid var(--neon-purple);
-    box-shadow: 0 0 15px -3px var(--neon-purple);
-}
-
-.card h2, .card h3 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    font-family: var(--font-heading);
-}
-
+.card { background-color: var(--card-bg); padding: 30px; border-radius: 12px; margin-bottom: 20px; }
+.card-neon-blue { border: 2px solid var(--neon-blue); box-shadow: 0 0 15px -3px var(--neon-blue); }
+.card-neon-purple { border: 2px solid var(--neon-purple); box-shadow: 0 0 15px -3px var(--neon-purple); }
+.card h2, .card h3 { font-size: 2rem; margin-bottom: 10px; font-family: var(--font-heading); }
 .card-neon-blue h2 { color: var(--neon-blue); }
 .card-neon-purple h3 { color: var(--neon-purple); }
 
-.instrucoes {
-    color: var(--text-color);
-    opacity: 0.7;
-    margin-bottom: 30px;
-    font-size: 1rem;
-}
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 0.9rem; margin-bottom: 5px; font-weight: bold; }
+input[type="text"], input[type="tel"], select { width: 100%; padding: 15px; background-color: var(--main-bg); border: 1px solid var(--input-border); border-radius: 8px; color: var(--text-color); font-family: var(--font-body); outline: none; transition: 0.3s; }
+input:focus, select:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px #00ffff40; }
 
-/* =========================================
-   5. Estilo do Formulário (inputs)
-   ========================================= */
-.pedido-section form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+.file-upload-wrapper { position: relative; display: inline-block; width: 100%; }
+.file-input { position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.file-custom-btn { display: inline-block; padding: 12px 20px; background-color: var(--input-border); border-radius: 8px; font-size: 0.9rem; }
+.file-name { margin-left: 10px; font-size: 0.9rem; opacity: 0.6; }
 
-.input-group label {
-    display: block;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-    color: var(--text-color);
-    opacity: 0.9;
-    font-weight: bold;
-}
+.btn { display: block; width: 100%; padding: 18px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; color: white; cursor: pointer; text-transform: uppercase; margin-top: 10px; text-align: center; text-decoration: none;}
+.btn-neon-purple { background-color: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple); }
+.btn-neon-blue { background-color: #007bff; box-shadow: 0 0 10px #007bff; }
 
-input[type="text"], select {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--main-bg);
-    border: 1px solid var(--input-border);
-    border-radius: 8px;
-    color: var(--text-color);
-    font-size: 1rem;
-    font-family: var(--font-body);
-    transition: all 0.3s ease;
-}
+.passos-wrapper { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+.passo { display: flex; align-items: start; gap: 15px; }
+.passo-numero { background-color: var(--neon-purple); color: white; font-weight: bold; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 5px var(--neon-purple); flex-shrink: 0; }
 
-input[type="text"]:focus, select:focus {
-    outline: none;
-    border-color: var(--neon-blue);
-    box-shadow: 0 0 10px var(--input-focus-blue);
-}
-
-/* Customizar Upload de Arquivo */
-.file-upload-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-}
-
-.file-input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-}
-
-.file-custom-btn {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: var(--input-border);
-    color: var(--text-color);
-    border-radius: 8px;
-    border: 1px solid var(--input-border);
-    font-size: 0.9rem;
-    transition: background 0.2s ease;
-}
-
-.file-input:hover + .file-custom-btn {
-    background-color: #3f3f5a;
-}
-
-.file-name {
-    margin-left: 10px;
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.6;
-}
-
-/* =========================================
-   6. Botões e Efeitos de Clique
-   ========================================= */
-.btn {
-    display: block;
-    width: 100%;
-    padding: 18px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.btn-neon-purple {
-    background-color: var(--neon-purple);
-    box-shadow: 0 0 10px var(--neon-purple);
-}
-
-.btn-neon-purple:hover {
-    background-color: #7b18b9; /* Roxo mais escuro para hover */
-    box-shadow: 0 0 20px var(--neon-purple);
-}
-
-.btn-neon-purple:active {
-    transform: translateY(1px);
-    box-shadow: 0 0 5px var(--neon-purple);
-}
-
-/* =========================================
-   7. Como Funciona (Passos)
-   ========================================= */
-.passos-wrapper {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.passo {
-    display: flex;
-    align-items: start;
-    gap: 15px;
-}
-
-.passo-numero {
-    background-color: var(--neon-purple);
-    color: white;
-    font-weight: bold;
-    font-size: 1.2rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 5px var(--neon-purple);
-    flex-shrink: 0; /* Impede que o círculo encolha em textos longos */
-}
-
-.passo p {
-    margin-top: 5px;
-    font-size: 0.95rem;
-    color: var(--text-color);
-}
-
-/* =========================================
-   8. Rodapé (Footer)
-   ========================================= */
-footer {
-    background-color: var(--card-bg);
-    padding: 40px 0;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.6;
-    border-top: 2px solid var(--input-border);
-}
-
-.footer-content p {
-    margin: 5px 0;
-}
+/* Para a Página Secreta */
+.painel-interno { max-width: 600px; margin: 40px auto; display: block; }
+.resultado-box { background: #1a1a2e; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px dashed var(--neon-blue); display: none; }
+#texto-gerado { color: #fff; white-space: pre-wrap; margin-bottom: 15px; font-size: 0.95rem; }
